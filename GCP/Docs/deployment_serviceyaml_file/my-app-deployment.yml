@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+spec:
+  replicas: 3  # Adjust the desired number of replicas as needed
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app-container
+        image: us-central1-docker.pkg.dev/ambient-tuner-373213/gke-repo/my-app-image:v1  # Specify the container image location
+        ports:
+        - containerPort: 5000  # The port your Flask app is listening on
